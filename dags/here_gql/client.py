@@ -49,7 +49,14 @@ class GraphQLConfig:
 def build_token(cfg: GraphQLConfig) -> str:
     """Sign a short-lived HS256 JWT. Mirror extract.auth.build_token claims exactly."""
     now = int(time.time())
-    claims = {"iss": cfg.iss, "aud": cfg.aud, "sub": cfg.sub, "iat": now, "exp": now + cfg.token_ttl}
+    claims = {
+        "sub": cfg.sub,
+        "preferred_username": cfg.sub,   # server resolves the user from this
+        "aud": cfg.aud,
+        "iss": cfg.iss,
+        "iat": now,
+        "exp": now + cfg.token_ttl,
+    }
     return jwt.encode(claims, cfg.jwt_secret, algorithm="HS256")
 
 
@@ -78,7 +85,8 @@ def run_query(cfg: GraphQLConfig, query: str, variables: dict | None = None) -> 
             f"HTTP {resp.status_code}: auth rejected. Check JWT secret, iss/aud/sub, "
             f"and x-of-auth-id. Body: {resp.text[:300]}"
         )
-    resp.raise_for_status()
+    if resp.status_code >= 400:
+        raise GraphQLError(f"HTTP {resp.status_code}: {resp.text[:1000]}")
 
     try:
         body = resp.json()

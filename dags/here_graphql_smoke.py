@@ -8,8 +8,8 @@ from datetime import datetime, timedelta
 
 from airflow.decorators import dag, task
 
-from here_gql.client import config_from_connection, run_query
-from here_gql.queries import SMOKE_QUERY
+from mwaa_graphql.here_gql.client import config_from_connection, run_query
+from mwaa_graphql.here_gql.queries import SMOKE_QUERY
 
 log = logging.getLogger(__name__)
 
