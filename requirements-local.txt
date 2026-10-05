@@ -1,0 +1,3 @@
+PyJWT>=2
+requests
+python-dotenv
