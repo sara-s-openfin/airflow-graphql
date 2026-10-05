@@ -1,0 +1,4 @@
+# Uploaded to MWAA. Both packages already ship with Airflow; listed so the dependency is explicit.
+# MWAA (Airflow 2.7.2+) applies its own constraints file when none is given.
+PyJWT
+requests

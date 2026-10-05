@@ -1,0 +1,3 @@
+# MWAA console -> Environment -> Edit -> Airflow configuration options
+secrets.backend        = airflow.providers.amazon.aws.secrets.secrets_manager.SecretsManagerBackend
+secrets.backend_kwargs = {"connections_prefix": "airflow/connections", "variables_prefix": null}
