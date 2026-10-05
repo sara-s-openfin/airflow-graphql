@@ -1,4 +1,6 @@
-# mwaa-here-graphql
+# airflow-graphql 
+
+mwaa-here-graphql
 
 Single-environment connectivity: MWAA -> https://here.is.here.io GraphQL over HTTPS, using a self-signed HS256 JWT.
 Scope: prove the connection and get JSON back. Postgres loading comes later.
