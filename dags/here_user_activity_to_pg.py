@@ -19,7 +19,7 @@ from mwaa_graphql.here_gql.user_activity import TABLE, fetch, load_window, rows_
 log = logging.getLogger(__name__)
 
 GQL_CONN_ID = "here_graphql"
-PG_CONN_ID = "analytics_pg"
+PG_CONN_ID = "license-data" # airflow connection to database
 
 
 @dag(

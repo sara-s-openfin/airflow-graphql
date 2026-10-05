@@ -1,7 +1,0 @@
-.env
-out/*
-!out/.gitkeep
-secrets/*.json
-!secrets/*.example.json
-__pycache__/
-*.pyc
